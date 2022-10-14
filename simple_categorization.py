@@ -1,13 +1,16 @@
+# 1. Single pixel categorizer, with fixed threshold
+# 2. Image categorizer, with fixed threshold
+# 3. Random threshold
+# 4. Training: give examples and nudge random init threshold towards correct labeling
+
 from PIL import Image
 import matplotlib.pyplot as plt
 import numpy as np
 
-def singlepixel_categorizer(pixel):
+def singlepixel_categorizer(pixel_array, threshold=0.5):
     category_labels = ['dunkel', 'hell']
-    # Convert to numpy array
-    pixel_array = np.asarray(pixel)
     # Categorize grayscale pixel
-    if pixel_array[0][0] > 0.5:
+    if pixel_array[0][0] > threshold:
         category = 1
     else:
         category = 0
@@ -19,14 +22,23 @@ def image_categorizer(img):
 image_location = 'img/white.png'
 # Open and convert to grayscale
 img = Image.open(image_location).convert('L')
-category = singlepixel_categorizer(img)
+# Convert to numpy array
+img_arr = np.array(img, np.uint8)
+category = singlepixel_categorizer(img_arr)
 print(f'category: {category}')
 
 image_location = 'img/black.png'
 img = Image.open(image_location).convert('L')
-category = singlepixel_categorizer(img)
+img_arr = np.array(img, np.uint8)
+category = singlepixel_categorizer(img_arr)
 print(f'category: {category}')
 
-# plt.imshow(img)
-# plt.show()
-# img = Image.open('img/white.png')
+image_location = 'img/forestfloor.jpg'
+img = Image.open(image_location) # .convert('L')
+img_arr = np.array(img, np.uint8)
+img_arr = img_arr[::, ::, 2]
+category = singlepixel_categorizer(img_arr)
+print(f'category: {category}')
+img = Image.fromarray(img_arr)
+plt.imshow(img, cmap='gray', vmin=0, vmax=255)
+plt.show()
