@@ -1,21 +1,37 @@
 # lpl-examples
 
-## Libraries:
+Montag:
+U01_Kameradaten.py
+U02_Segmentierung.py
 
-- imageio. Image operations with imageio. https://imageio.readthedocs.io/en/stable/examples.html
+Dienstag:
+U03_MLP_training.py > Ausführen auf PC, Laptop, Cloud
+U03_MLP_inference.py > Ausführen auf Raspberry PI
 
-- PIL. pillow. Image operations
+## Verwendete Bibliotheken:
+Zeitoperationen (Schlafmodus für Loops)
+from time import sleep
 
-- matplotlib. Visualization. 
+Kameraimport für Raspberry Camera Module
+from picamera import PiCamera
 
-## simple_categorization
+Plottingbibliothek, ähnelt Matlab's Plots
+import matplotlib.pyplot as plt
 
-conda install imageio
-conda install pillow
-conda install matplotlib
+Scikit image Segmentierungsalgorithmen
+import skimage.segmentation as seg
 
-# 1. Single pixel categorizer, with fixed threshold
-# 2. Image categorizer, with fixed threshold
-# 3. Random threshold
-# 4. Training: give examples and nudge random init threshold towards correct labeling
+Scikit image Farboperationen
+import skimage.color as color
 
+Scikit image Interaktion mit Daten auf Disk (input, output)
+from skimage import io
+
+Datensätze laden von scikit-learn
+import sklearn.datasets as skl_data
+
+Neuronale Netzwerke mit scikit-learn
+import sklearn.neural_network as skl_nn
+
+Saving and loading objects to disk from Python
+import pickle 

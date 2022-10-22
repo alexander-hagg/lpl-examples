@@ -2,7 +2,7 @@
 import sklearn.datasets as skl_data
 import sklearn.neural_network as skl_nn
 import pickle
-import matplotlib.pyplot as plt
+
 
 # Datenimport (MNIST Datensatz)
 data, labels = skl_data.fetch_openml('mnist_784', version=1, return_X_y=True)
