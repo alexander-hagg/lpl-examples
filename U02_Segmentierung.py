@@ -11,7 +11,9 @@ def image_show(image, nrows=1, ncols=1, cmap='gray'):
     return fig, ax
 
 
-image = io.imread('bear.jpg')
+image = io.imread('img/bear.jpg')
+# image = io.imread('img/forestfloor.jpg')
+
 image_felzenszwalb = seg.felzenszwalb(image)
 image_show(image_felzenszwalb)
 plt.show()
